@@ -6,6 +6,10 @@ buildscript {
     glide_version = 'accompanist-glide:0.6.2'
     network_response_adapter_version = '4.2.2'
   }
+
+  dependencies {
+    classpath 'com.google.dagger:hilt-android-gradle-plugin:2.38.1'
+  }
 }
 plugins {
   id 'com.android.application' version '7.2.0-alpha04' apply false
