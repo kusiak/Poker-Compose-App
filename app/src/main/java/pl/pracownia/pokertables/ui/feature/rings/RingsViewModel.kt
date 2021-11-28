@@ -1,16 +1,13 @@
-package pl.pracownia.pokertables.ui.rings
+package pl.pracownia.pokertables.ui.feature.rings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.haroldadmin.cnradapter.NetworkResponse.NetworkError
-import com.haroldadmin.cnradapter.NetworkResponse.ServerError
 import com.haroldadmin.cnradapter.NetworkResponse.Success
-import com.haroldadmin.cnradapter.NetworkResponse.UnknownError
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import pl.pracownia.pokertables.data.PokerApi
-import pl.pracownia.pokertables.data.PokerApiService
+import pl.pracownia.pokertables.model.data.PokerApi
+import pl.pracownia.pokertables.model.data.PokerApiService
 import pl.pracownia.pokertables.model.Ring
 
 data class RingsViewModelState(

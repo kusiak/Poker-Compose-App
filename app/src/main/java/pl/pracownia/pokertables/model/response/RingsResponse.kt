@@ -1,4 +1,4 @@
-package pl.pracownia.pokertables.data.network
+package pl.pracownia.pokertables.model.response
 
 import pl.pracownia.pokertables.model.Ring
 
