@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -17,24 +18,22 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       PokerTablesTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-          Greeting("Android")
-        }
+        MyApp()
       }
     }
   }
 }
 
 @Composable
-fun Greeting(name: String) {
-  Text(text = "Hello $name!")
+fun MyApp() {
+  Scaffold(
+    content = {
+      Greeting(name = "Test")
+    }
+  )
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-  PokerTablesTheme {
-    Greeting("Android")
-  }
+fun Greeting(name: String) {
+  Text(text = "Hello $name!")
 }
