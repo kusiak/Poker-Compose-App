@@ -57,4 +57,7 @@ abstract class BaseViewModel<Event : UiEvent, UiState : pl.pracownia.pokertables
         viewModelScope.launch { _uiEffect.send(effectValue) }
     }
 
+    companion object {
+        const val LISTEN_FOR_EFFECTS = "launch-listen-to-effects"
+    }
 }
