@@ -43,7 +43,7 @@ fun PokerApp() {
     composable(
       route = NavigationKeys.Route.RING_DETAILS,
       arguments = listOf(navArgument(Arg.RING_ID) {
-        type = NavType.StringType
+        type = NavType.LongType
       })
     ) {
       RingDetailsDestination()

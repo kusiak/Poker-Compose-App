@@ -7,10 +7,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.max
 import coil.compose.rememberImagePainter
@@ -44,7 +46,45 @@ private fun SeatsList(
   Box(){
     LazyColumn(Modifier.fillMaxWidth()) {
       items(seats) { seat ->
-        Text(text = seat.username)
+        Card(
+          shape = RoundedCornerShape(8.dp),
+          backgroundColor = MaterialTheme.colors.surface,
+          elevation = 2.dp,
+          modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp)
+        ){
+          Row {
+            Card(
+              modifier = Modifier.padding(16.dp),
+              shape = CircleShape,
+              border = BorderStroke(
+                width = 1.dp,
+                color = Color.Black
+              ),
+              elevation = 4.dp
+            ) {
+              Image(
+                painter = rememberImagePainter(
+                  data = seat.avatar,
+                  builder = {
+                    transformations(CircleCropTransformation())
+                  },
+                ),
+                modifier = Modifier.size(max(72.dp, 72.dp)),
+                contentDescription = "Avatar thumbnail picture",
+              )
+            }
+
+            Text(
+              text = seat.username,
+              Modifier.padding(16.dp),
+              textAlign = TextAlign.Center,
+              style = MaterialTheme.typography.subtitle2
+            )
+
+          }
+        }
       }
     }
   }
@@ -55,28 +95,7 @@ private fun CategoryDetailsCollapsingToolbar(
   ring: Ring?,
   scrollOffset: Float,
 ) {
-  val imageSize by animateDpAsState(targetValue = max(72.dp, 128.dp * scrollOffset))
   Row {
-    Card(
-      modifier = Modifier.padding(16.dp),
-      shape = CircleShape,
-      border = BorderStroke(
-        width = 2.dp,
-        color = Color.Black
-      ),
-      elevation = 4.dp
-    ) {
-      Image(
-        painter = rememberImagePainter(
-          data = ring?.seats?.firstOrNull()?.avatar,
-          builder = {
-            transformations(CircleCropTransformation())
-          },
-        ),
-        modifier = Modifier.size(max(72.dp, imageSize)),
-        contentDescription = "Avatar thumbnail picture",
-      )
-    }
     RingDetails(
       item = ring,
       expandedLines = (kotlin.math.max(3f, scrollOffset * 6)).toInt(),
