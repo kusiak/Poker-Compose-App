@@ -43,5 +43,4 @@ class PokerApiProvider {
   ): PokerApi.Service {
     return retrofit.create(PokerApi.Service::class.java)
   }
-
 }

@@ -9,6 +9,4 @@ class PokerRepository @Inject constructor(private val pokerApi: PokerApi) {
   suspend fun getRings(): List<Ring> {
     return pokerApi.getRings().rings
   }
-
-  
 }

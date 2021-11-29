@@ -2,7 +2,7 @@ package pl.pracownia.pokertables.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Ring (
+data class Ring(
   val id: Long,
   val name: String,
   val url: String,
@@ -43,17 +43,17 @@ data class Ring (
   val antes: Long? = null
 )
 
-data class Blinds (
+data class Blinds(
   val small: Long,
   val big: Long
 )
 
-data class Brings (
+data class Brings(
   val min: Long,
   val max: Long
 )
 
-data class Game (
+data class Game(
   val name: String,
   val variation: Variation,
   val limit: Limit
@@ -69,9 +69,9 @@ enum class Limit(val value: String) {
     public fun fromValue(value: String): Limit = when (value) {
       "fixed limit" -> FixedLimit
       "mixed limit" -> MixedLimit
-      "no limit"    -> NoLimit
-      "pot limit"   -> PotLimit
-      else          -> throw IllegalArgumentException()
+      "no limit" -> NoLimit
+      "pot limit" -> PotLimit
+      else -> throw IllegalArgumentException()
     }
   }
 }
@@ -86,30 +86,29 @@ enum class Variation(val value: String) {
 
   companion object {
     public fun fromValue(value: String): Variation = when (value) {
-      "holdem"      -> Holdem
-      "omaha"       -> Omaha
+      "holdem" -> Holdem
+      "omaha" -> Omaha
       "omaha_hi_lo" -> OmahaHiLo
-      "royal"       -> Royal
-      "stud7"       -> Stud7
-      "stud7HiLo"   -> Stud7HiLo
-      else          -> throw IllegalArgumentException()
+      "royal" -> Royal
+      "stud7" -> Stud7
+      "stud7HiLo" -> Stud7HiLo
+      else -> throw IllegalArgumentException()
     }
   }
 }
 
-data class Promotion (
+data class Promotion(
   val name: String,
   val url: String
 )
 
-
-data class Seat (
-  val id: Long? = null,
-  val username: String? = null,
-  val chips: Long? = null,
-  val url: String? = null,
-  val avatar: String? = null,
-  val country: String? = null
+data class Seat(
+  val id: Long,
+  val username: String,
+  val chips: Long,
+  val url: String,
+  val avatar: String,
+  val country: String,
 )
 
 enum class Stake(val value: String) {
@@ -120,11 +119,11 @@ enum class Stake(val value: String) {
 
   companion object {
     public fun fromValue(value: String): Stake = when (value) {
-      "elite"  -> Elite
-      "high"   -> High
-      "low"    -> Low
+      "elite" -> Elite
+      "high" -> High
+      "low" -> Low
       "medium" -> Medium
-      else     -> throw IllegalArgumentException()
+      else -> throw IllegalArgumentException()
     }
   }
 }
@@ -135,17 +134,17 @@ enum class Type(val value: String) {
   companion object {
     public fun fromValue(value: String): Type = when (value) {
       "ring" -> Ring
-      else   -> throw IllegalArgumentException()
+      else -> throw IllegalArgumentException()
     }
   }
 }
 
-data class WaitingList (
+data class WaitingList(
   val user: User,
   val enter: String
 )
 
-data class User (
+data class User(
   val id: Long,
   val url: String,
   val avatar: String,
@@ -166,7 +165,7 @@ enum class Status(val value: String) {
     public fun fromValue(value: String): Status = when (value) {
       "online" -> Online
       "offline" -> Offline
-      else     -> throw IllegalArgumentException()
+      else -> throw IllegalArgumentException()
     }
   }
 }

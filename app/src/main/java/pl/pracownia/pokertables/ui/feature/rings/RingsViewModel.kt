@@ -12,7 +12,7 @@ class RingsViewModel @Inject constructor(private val repository: PokerRepository
   BaseViewModel<RingsContract.Event, RingsContract.State, RingsContract.Effect>() {
 
   init {
-    viewModelScope.launch { getFoodCategories() }
+    viewModelScope.launch { getRingCategories() }
   }
 
   override fun setInitialState() =
@@ -26,12 +26,11 @@ class RingsViewModel @Inject constructor(private val repository: PokerRepository
     }
   }
 
-  private suspend fun getFoodCategories() {
+  private suspend fun getRingCategories() {
     val rings = repository.getRings()
     setState {
       copy(rings = rings, isLoading = false)
     }
     setEffect { RingsContract.Effect.DataWasLoaded }
   }
-
 }
